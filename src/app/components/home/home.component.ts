@@ -11,27 +11,38 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   keyword: string = 'login';
   users: Array<Users> = [];
-
+  wrongInput: boolean = false;
 
   constructor(
     private apiService: ApiService,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {
+  }
   ngOnInit(): void {
     this.getUsersFromApi();
 
   }
 
   getUsersFromApi() {
-    this.apiService.getUsers().subscribe((usersApi: Array<Users>) => {
-      console.log(usersApi);
-      this.users = usersApi;
-    });
+    this.apiService.getUsers().subscribe((usersApi: Array<Users>) => this.users = usersApi);
   }
-
 
   selectEvent(user) {
     this.router.navigate(['/profile', user.login]);
+  }
+
+  onChangeSearch() {
+    this.wrongInput = false;
+  }
+
+  onSubmit(inputUser) {
+    this.users.forEach(user => {
+      if (inputUser.name === user.login) {
+        this.router.navigate(['/profile', inputUser.name]);
+      } else {
+        this.wrongInput = true;
+      }
+    });
   }
 
 }

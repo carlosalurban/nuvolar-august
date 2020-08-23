@@ -1,32 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { Users } from 'src/app/models/users.model';
+import { UserProfile } from 'src/app/models/userprofile.model';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  userProfile: Users;
-
+  user$: Observable<UserProfile>;
   constructor(
     private apiService: ApiService,
     private routerActive: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.routerActive.params.subscribe(name => {
-      console.log(name.user)
-      this.apiService.getUser(name.user)
-        .subscribe(user => {
-          this.userProfile = user;
-          console.log(this.userProfile);
-        })
-
-    })
+    this.user$ = this.routerActive.params.pipe(
+      switchMap(name => this.apiService.getUser(name.user))
+    );
 
   }
+
 
 }
