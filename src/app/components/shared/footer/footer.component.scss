@@ -1,11 +1,17 @@
-@import '../../../corporative-colors.scss';
+@import "../../../corporative-colors.scss";
 
-.bg-footer{
-    background-color: #003C4D;
+.bg-footer {
+    background-color: #003c4d;
 }
-.footer-copyright{
+.footer-copyright {
     color: lightgray;
-    a{
+    a {
         color: #fff;
     }
+}
+
+.footer-position {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }

@@ -1,0 +1,12 @@
+.user-img {
+    // width: 100%;
+    border-radius: 100%;
+    width: 100%;
+}
+.avatar-box {
+    width: 100px;
+}
+
+::ng-deep .autocomplete-container .suggestions-container ul {
+    max-height: 76vh !important;
+}

@@ -11,8 +11,8 @@ export class ApiService {
   apiUrl: string = 'https://api.github.com/';
 
   constructor(private http: HttpClient) { }
-  getUser(userName): Observable<Object> {
-    return this.http.get(this.apiUrl + 'user/' + userName);
+  getUser(userName): Observable<Users> {
+    return this.http.get<Users>(this.apiUrl + 'users/' + userName);
   }
   getUsers(): Observable<Array<Users>> {
     return this.http.get<Array<Users>>(this.apiUrl + 'users?');

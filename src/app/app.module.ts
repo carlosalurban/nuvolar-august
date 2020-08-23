@@ -1,23 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
+/*Modules*/
 import { AppRoutingModule } from './app-routing.module';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+
+/*Components*/
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/shared/nav/nav.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavComponent } from './components/shared/nav/nav.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    AutocompleteLibModule,
+    BrowserModule,
     HttpClientModule
   ],
   providers: [],

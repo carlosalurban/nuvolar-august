@@ -1,3 +1,31 @@
-<div class="active-cyan-3 active-cyan-4 mb-4">
-    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+<div class="active-cyan-3 active-cyan-4 mb-4" *ngIf="users">
+    <ng-autocomplete [data]="users" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeHolder="Search user"
+        notFoundText="Not found user">
+    </ng-autocomplete>
+    <ng-template #itemTemplate let-item>
+        <div class="card mb-3">
+            <div class="row no-gutters m-3">
+                <div class="avatar-box">
+                    <img [src]="item.avatar_url" class="card-img user-img">
+                </div>
+                <div class="col-8 col-lg-6 col-sm-2 mt-3 ml-5">
+                    <div class="col-12">
+                        <p>User Id:
+                            <span [innerHTML]="item.id"></span>
+                        </p>
+                        <p>
+                            User Name:
+                            <span [innerHTML]="item.login"></span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
 </div>
