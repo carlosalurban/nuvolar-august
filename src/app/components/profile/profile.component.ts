@@ -16,7 +16,9 @@ export class ProfileComponent implements OnInit {
     private apiService: ApiService,
     private routerActive: ActivatedRoute
   ) { }
-
+  /**
+   * Call to take users from Api
+   */
   ngOnInit(): void {
     this.user$ = this.routerActive.params.pipe(
       switchMap(name => this.apiService.getUser(name.user))

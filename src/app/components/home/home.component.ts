@@ -16,25 +16,40 @@ export class HomeComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private router: Router,
-  ) {
-  }
+  ) { }
+
   ngOnInit(): void {
     this.getUsersFromApi();
 
   }
 
+
+  /**
+   * Subscription from getter users of GitHub API 
+   */
   getUsersFromApi() {
     this.apiService.getUsers().subscribe((usersApi: Array<Users>) => this.users = usersApi);
   }
 
+  /**
+   * Navigation with param selected with mousevent of autocomplete
+   * @param user 
+   */
   selectEvent(user) {
     this.router.navigate(['/profile', user.login]);
   }
 
+  /**
+   * Set Boolean global property when the wrong search change
+   */
   onChangeSearch() {
     this.wrongInput = false;
   }
 
+  /**
+   * Navigate with url param to profile component in case the search match, if no set Boolean global property and activate Alert
+   * @param inputUser 
+   */
   onSubmit(inputUser) {
     this.users.forEach(user => {
       if (inputUser.name === user.login) {
