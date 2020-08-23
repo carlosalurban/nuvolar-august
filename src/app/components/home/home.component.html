@@ -1,19 +1,32 @@
 <div class="home-container">
-    <div class="active-cyan-3 active-cyan-4 mb-4" *ngIf="users">
-        <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-            <ng-autocomplete [data]="users" [searchKeyword]="keyword" (selected)='selectEvent($event)'
-                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeHolder="Search user"
-                notFoundText="User Not found" [notFoundTemplate]="notFoundTemplate" (inputChanged)='onChangeSearch()'
-                name="name" [(ngModel)]="name">
+    <div class="active-cyan-3 active-cyan-4 mb-4"
+         *ngIf="users">
+        <form #form="ngForm"
+              (ngSubmit)="onSubmit(form.value)">
+            <ng-autocomplete [data]="users"
+                             [searchKeyword]="keyword"
+                             (selected)='selectEvent($event)'
+                             [itemTemplate]="itemTemplate"
+                             [notFoundTemplate]="notFoundTemplate"
+                             placeHolder="Search user"
+                             notFoundText="User Not found"
+                             [notFoundTemplate]="notFoundTemplate"
+                             (inputChanged)='onChangeSearch()'
+                             name="name"
+                             [(ngModel)]="name">
             </ng-autocomplete>
-            <div *ngIf="wrongInput" class="alert alert-danger" role="alert">
+            <div *ngIf="wrongInput"
+                 class="alert alert-danger"
+                 role="alert">
                 This user doesn`t exist! try again...
             </div>
-            <ng-template #itemTemplate let-item>
+            <ng-template #itemTemplate
+                         let-item>
                 <div class="card mb-3">
                     <div class="row no-gutters m-3">
                         <div class="avatar-box">
-                            <img [src]="item.avatar_url" class="card-img user-img">
+                            <img [src]="item.avatar_url"
+                                 class="card-img user-img">
                         </div>
                         <div class="col-8 col-lg-6 col-m-4 col-xs-4 mt-3">
                             <div class="col-12">
@@ -30,7 +43,8 @@
                     </div>
                 </div>
             </ng-template>
-            <ng-template #notFoundTemplate let-notFound>
+            <ng-template #notFoundTemplate
+                         let-notFound>
                 <div [innerHTML]="notFound"></div>
             </ng-template>
         </form>

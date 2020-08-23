@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
     this.user$ = this.routerActive.params.pipe(
       switchMap(name => this.apiService.getUser(name.user))
     );
-
   }
 
 

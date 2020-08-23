@@ -1,28 +1,37 @@
 <div class="container">
-    <div class="card mb-3" *ngIf="{userProfile:user$ | async} as data">
-        <div class="row no-gutters" *ngIf="data.userProfile">
-            <div class="col-md-4">
-                <img [src]="data.userProfile.avatar_url" class="card-img">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">{{data.userProfile.login | uppercase}}</h5>
-                    <h6 class="card-title">{{data.userProfile.name | titlecase}}</h6>
-                    <p class="card-text"><strong>Followers: {{data.userProfile.followers}}</strong></p>
-                    <p class="card-text"><strong>Following: {{data.userProfile.following}}</strong></p>
-                    <p class="card-text" *ngIf="data.userProfile.bio">{{data.userProfile.bio}}</p>
-                    <p class="card-text" *ngIf="!data.userProfile.bio">{{data.userProfile.login | titlecase}} User has
-                        no
-                        bio..
-                    </p>
-                    <p class="card-text"> <strong>{{data.userProfile.public_repos}} public repositories at: </strong>
-                        <a [href]="data.userProfile.html_url" target="_blank">{{data.userProfile.html_url}}</a>
-                    </p>
-                    <p class="card-text"><small class="text-muted">Profile created at:
-                            <strong>{{data.userProfile.created_at | date: 'fullDate'}}</strong></small>
-                    </p>
-                </div>
-            </div>
+  <div class="card mb-3"
+       *ngIf="{userProfile:user$ | async} as data">
+    <div class="row no-gutters"
+         *ngIf="data.userProfile">
+      <div class="col-md-4">
+        <img [src]="data.userProfile.avatar_url"
+             class="card-img">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">{{data.userProfile.login | uppercase}}</h5>
+          <h6 class="card-title">{{data.userProfile.name | titlecase}}</h6>
+          <p class="card-text"><strong>Followers: {{data.userProfile.followers}}</strong></p>
+          <p class="card-text"><strong>Following: {{data.userProfile.following}}</strong></p>
+          <p class="card-text"
+             *ngIf="data.userProfile.bio">
+            {{data.userProfile.bio}}
+          </p>
+          <p class="card-text"
+             *ngIf="!data.userProfile.bio">
+            {{data.userProfile.login | titlecase}} User has no bio..
+          </p>
+          <p class="card-text"> <strong>{{data.userProfile.public_repos}} public repositories at: </strong>
+            <a [href]="data.userProfile.html_url"
+               target="_blank">
+              {{data.userProfile.html_url}}
+            </a>
+          </p>
+          <p class="card-text"><small class="text-muted">Profile created at:
+              <strong>{{data.userProfile.created_at | date: 'fullDate'}}</strong></small>
+          </p>
         </div>
+      </div>
     </div>
+  </div>
 </div>
