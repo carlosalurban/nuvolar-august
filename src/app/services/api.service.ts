@@ -9,6 +9,7 @@ import { UserProfile } from '../models/userprofile.model';
   providedIn: 'root'
 })
 export class ApiService {
+
   apiUrl: string = 'https://api.github.com/';
 
   constructor(private http: HttpClient) { }

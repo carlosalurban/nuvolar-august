@@ -11,11 +11,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+
   user$: Observable<UserProfile>;
+
   constructor(
     private apiService: ApiService,
     private routerActive: ActivatedRoute
   ) { }
+
   /**
    * Call to take users from Api
    */
@@ -24,6 +27,5 @@ export class ProfileComponent implements OnInit {
       switchMap(name => this.apiService.getUser(name.user))
     );
   }
-
 
 }

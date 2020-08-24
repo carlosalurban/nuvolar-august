@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   keyword: string = 'login';
   users: Array<Users> = [];
   wrongInput: boolean = false;
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit {
     this.getUsersFromApi();
 
   }
-
 
   /**
    * Subscription from getter users of GitHub API 
