@@ -28,6 +28,18 @@ export class HomeComponent implements OnInit {
     this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
       console.log(userApi);
     });
+    this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
+      console.log(userApi);
+    });
+    this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
+      console.log(userApi);
+    });
+    this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
+      console.log(userApi);
+    });
+    this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
+      console.log(userApi);
+    });
 
   }
 
