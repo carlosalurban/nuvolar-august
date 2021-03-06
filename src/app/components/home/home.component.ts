@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getUsersFromApi();
 
+    this.apiService.getUsers().subscribe((userApi: Array<Users>) => {
+      console.log(userApi);
+    });
+
   }
 
   /**
